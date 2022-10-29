@@ -6,5 +6,7 @@ Download the ``data`` folder from the [Text-GCN](https://github.com/lgalke/text_
 
 # Setting up the environment
 ``conda create --name text_clf``
+
 ``conda activate text_clf``
+
 ``pip install -r requirements.txt``
