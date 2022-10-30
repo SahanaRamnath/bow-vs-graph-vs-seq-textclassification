@@ -6,7 +6,7 @@ import torch
 from joblib import Memory
 from tqdm import tqdm
 
-from textgraph import TextGraph
+# from textgraph import TextGraph
 
 CACHE_DIR = 'tmp/cache'
 MEMORY = Memory(CACHE_DIR, verbose=2)

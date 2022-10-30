@@ -31,7 +31,7 @@ from sklearn.feature_extraction.text import TfidfTransformer
 
 from tokenization import build_tokenizer_for_word_embeddings
 from data import load_data, load_word_vectors, shuffle_augment
-from models import MLP, collate_for_mlp
+from models import MultiLayerPerceptron as MLP, collate_for_mlp
 
 USE_CUDA = torch.cuda.is_available()
 

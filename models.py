@@ -22,15 +22,16 @@ class MultiLayerPerceptron(torch.nn.Module):
 
         torch.nn.Module.__init__(self)
 
-        self.activation = getattr(torch.nn.Functional, hidden_act)
+        self.activation = getattr(torch.nn.functional, hidden_act)
         self.embedding_dropout = torch.nn.Dropout(embedding_dropout)
         self.dropout = torch.nn.Dropout(dropout)
         self.layers = torch.nn.ModuleList()
         self.loss_function = torch.nn.CrossEntropyLoss()
         if idf:
             mode='sum'
+        self.idf = idf
 
-        if pretrained_embedding:
+        if pretrained_embedding is not None:
             self.embedding = torch.nn.EmbeddingBag.from_pretrained(pretrained_embedding, freeze=freeze, mode=mode)
             embedding_size = pretrained_embedding.size(1)
             self.embedding_is_pretrained = True

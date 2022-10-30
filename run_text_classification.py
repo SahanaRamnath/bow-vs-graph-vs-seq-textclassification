@@ -22,8 +22,16 @@ from tqdm import tqdm, trange
 
 from tokenization import build_tokenizer_for_word_embeddings
 from data import load_data, load_word_vectors, shuffle_augment
-from models import MLP, collate_for_mlp
+from models import MultiLayerPerceptron as MLP, collate_for_mlp
 from run_model import run_xy_model
+
+from transformers import (WEIGHTS_NAME, AdamW, AutoTokenizer, BertConfig,
+                          BertForSequenceClassification, BertModel,
+                          BertTokenizer, DistilBertConfig,
+                          DistilBertForSequenceClassification, DistilBertModel,
+                          DistilBertTokenizer, get_linear_schedule_with_warmup)
+from transformers import DISTILBERT_PRETRAINED_MODEL_ARCHIVE_LIST,\
+    BERT_PRETRAINED_MODEL_ARCHIVE_LIST
 
 try:
     import wandb
