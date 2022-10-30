@@ -10,3 +10,6 @@ Download the ``data`` folder from the [Text-GCN](https://github.com/lgalke/text_
 ``conda activate text_clf``
 
 ``pip install -r requirements.txt``
+
+# Sample code
+``python3 run_text_classification.py --model_type=
