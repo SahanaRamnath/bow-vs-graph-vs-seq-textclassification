@@ -1,5 +1,7 @@
 # bow-vs-graph-vs-seq-textclassification
-Code for reproducing [Bag-of-Words vs. Graph vs. Sequence in Text Classification: Questioning the Necessity of Text-Graphs and the Surprising Strength of a Wide MLP](https://arxiv.org/abs/2109.03777)
+Code for reproducing [Bag-of-Words vs. Graph vs. Sequence in Text Classification: Questioning the Necessity of Text-Graphs and the Surprising Strength of a Wide MLP](https://arxiv.org/abs/2109.03777). 
+
+This code was adapted from the [official code](https://github.com/lgalke/text-clf-baselines) released by the original work's authors.
 
 # Data
 Download the ``data`` folder from the [Text-GCN](https://github.com/lgalke/text_gcn) repository and place the folder in the main directory.
