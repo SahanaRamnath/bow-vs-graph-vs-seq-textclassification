@@ -6,6 +6,7 @@ import csv
 import itertools as it
 import logging
 import argparse
+import time
 
 import os
 os.environ["TOKENIZERS_PARALLELISM"] = "false"
@@ -39,6 +40,7 @@ try:
 except ImportError:
     print("WandB not installed, to track experiments: pip install wandb")
     WANDB = False
+WANDB = False
 
 logging.basicConfig(format='%(asctime)s - %(levelname)s - %(name)s -   %(message)s',
                     datefmt='%m/%d/%Y %H:%M:%S',
@@ -153,6 +155,9 @@ def main():
 
 
 if __name__ == '__main__':
+    start = time.time()
     main()
+    end = time.time()
+    print("Time taken: ", end-start)
 
 

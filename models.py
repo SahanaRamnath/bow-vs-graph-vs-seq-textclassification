@@ -18,7 +18,7 @@ def collate_for_mlp(list_of_samples):
 class MultiLayerPerceptron(torch.nn.Module):
 
     def __init__(self,vocab_size, num_classes, num_hidden_layers=1, hidden_size=1024, hidden_act='relu',
-                 dropout=0.5, idf=None, mode='mean', pretrained_embedding=None, freeze=True, embedding_dropout=0.5):
+                 dropout=0.5, idf=None, bow_aggregation=None, mode='mean', pretrained_embedding=None, freeze=True, embedding_dropout=0.5):
 
         torch.nn.Module.__init__(self)
 
@@ -27,7 +27,8 @@ class MultiLayerPerceptron(torch.nn.Module):
         self.dropout = torch.nn.Dropout(dropout)
         self.layers = torch.nn.ModuleList()
         self.loss_function = torch.nn.CrossEntropyLoss()
-        if idf:
+        self.bow_aggregation = bow_aggregation
+        if bow_aggregation=='tfidf':
             mode='sum'
         self.idf = idf
 
@@ -50,7 +51,7 @@ class MultiLayerPerceptron(torch.nn.Module):
             self.layers.append(torch.nn.Linear(embedding_size, num_classes))
 
     def forward(self, input, offset, labels = None):
-        if self.idf:
+        if self.bow_aggregation=='tfidf':
             idf_weights = self.idf[input]
         else:
             idf_weights = None

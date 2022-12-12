@@ -34,6 +34,8 @@ from data import load_data, load_word_vectors, shuffle_augment
 from models import MultiLayerPerceptron as MLP, collate_for_mlp
 
 USE_CUDA = torch.cuda.is_available()
+CACHE_DIR = 'cache/textclf'
+MEMORY = Memory(CACHE_DIR, verbose=2)
 
 VALID_DATASETS = [ '20ng', 'R8', 'R52', 'ohsumed', 'mr'] + ['TREC', 'wiki']
 
@@ -52,6 +54,7 @@ try:
 except ImportError:
     print("WandB not installed, to track experiments: pip install wandb")
     WANDB = False
+WANDB=False
 
 def inverse_document_frequency(encoded_docs, vocab_size):
     # returns idf scores
@@ -368,6 +371,7 @@ def run_xy_model(args, logger):
                     mode=args.bow_aggregation,
                     pretrained_embedding=embedding,
                     idf=idf,
+                    bow_aggregation=args.bow_aggregation,
                     freeze=args.freeze_embedding)
 
     model.to(args.device)
